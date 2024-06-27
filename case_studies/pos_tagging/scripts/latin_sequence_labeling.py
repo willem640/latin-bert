@@ -111,7 +111,7 @@ class BertForSequenceLabeling(nn.Module):
 		if labels is not None:
 			labels = labels.to(device)
 
-		sequence_outputs, pooled_outputs = self.bert(input_ids, token_type_ids=None, attention_mask=attention_mask)
+		sequence_outputs, pooled_outputs = self.bert(input_ids, token_type_ids=None, attention_mask=attention_mask).values()
 		all_layers=sequence_outputs
 		out=torch.matmul(transforms,all_layers)
 
